@@ -1,4 +1,5 @@
 from django.db import models
+from accounts.models import UserAccount
 
 # Create your models here.
 class Book(models.Model):
@@ -11,6 +12,7 @@ class Book(models.Model):
     category = models.ForeignKey('category',on_delete=models.CASCADE)
     total_copies=models.PositiveIntegerField(null=True,blank=True,default=0)
     publish_date=models.DateField(max_length=100,null=True,blank=True)
+    added_by=models.ForeignKey(UserAccount,on_delete=models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True)
     update_at=models.DateTimeField(auto_now=True,blank=True)
 
