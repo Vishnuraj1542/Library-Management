@@ -8,7 +8,7 @@ class UserAccount(AbstractUser):
         'library':'library',
         'teacher':'teacher',
     }
+    students_id = models.IntegerField(null=True,blank=True)
+    Admission_number=models.IntegerField(null=True,blank=True)
     phone = models.CharField(max_length=22,null=True,blank=True)
     user_type=models.CharField(null=True,blank=True,choices=USER_TYPE_CHOICES)
-
-    
