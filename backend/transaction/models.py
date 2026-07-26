@@ -4,7 +4,7 @@ from Book.models import Book
 class Lended(models.Model):
     STATUS_CHOICES=[('Issued','issued'),('Returned','returned'),('Due','due'),('Lost','lost')]
     book_name = models.ForeignKey(Book,null=True,blank=True,on_delete=models.CASCADE)
-    user= models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.SET_NULL,null=True,blank=True)
+    lended_user= models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.SET_NULL,null=True,blank=True,related_name='taken_user')
     issued_officer = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.SET_NULL,null=True,blank=True,limit_choices_to={
         'user_type':'library'
     })
