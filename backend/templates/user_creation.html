@@ -6,9 +6,12 @@
     <title>Registration Form</title>
 </head>
 <body>
-    <h2>Registration Form</h2>
-    {%csrf_token%}
-    {{form.as_p}}
+    <form method="post">
+        <h2>Registration Form</h2>
+        {%csrf_token%}
+        {{form.as_p}}
     <button type="submit">register</button>
+    </form>
+    
 </body>
 </html>
