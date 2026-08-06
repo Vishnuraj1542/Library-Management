@@ -23,16 +23,21 @@ def user_creation(request):
 
     return render(request, "user_creation.html", {"form": form})
 
-def login(request):
+def login_view(request):
     if request.method =="POST":
         username=request.POST.get('username')
+        name=UserAccount.objects.filter(username)
+        if name :
+            print(name)
         password=request.POST.get('password')
-        user=authenticate(request,username='username',password='password')
+        user=authenticate(request,username=username,password=password)
         if user is not None:
             login(request,user)
+            print('user logged in sucessfully')
             return redirect('home')
         else:
-            return render('login.html'),{'error':'invalid credential'}
+            print('not correct')
+            return render(request,'login.html',{'error':'invalid credential'})
     return render(request,'login.html')
         
     
