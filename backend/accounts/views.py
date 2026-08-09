@@ -32,9 +32,16 @@ def login_view(request):
         password=request.POST.get('password')
         user=authenticate(request,username=username,password=password)
         if user is not None:
+            user_pages={
+                'student':'book_page',
+                'teacher':'book_page',
+                'admin':'admin/index',
+                'library':'librarian_page'
+            }
+            iden_user=user_pages.get(request.user.user_type)
             auth_login(request,user)
             print('user logged in sucessfully')
-            return redirect('homepage')
+            return redirect('iden_user','homepage')
         else:
             print('not correct')
             return render(request,'login.html',{'error':'invalid credential'})
