@@ -4,7 +4,7 @@ from accounts.models import UserAccount
 # Create your models here.
 class Book(models.Model):
     Language_Choices = [
-        ('Eng','English'),('Mal','Malayalam'),('Hni','Hindi')
+        ('Eng','English'),('Mal','Malayalam'),('Hin','Hindi')
     ]
     book_name=models.CharField(max_length=100,null=True,blank=True)
     author_name=models.ForeignKey('Author',null=True,blank=True,on_delete=models.CASCADE)
@@ -17,8 +17,8 @@ class Book(models.Model):
     update_at=models.DateTimeField(auto_now=True,blank=True)
 
 class Author(models.Model):
-    name=models.CharField(max_length=30,null=True,blank=True),
-    dob=models.DateField(),
+    name=models.CharField(max_length=30,null=True,blank=True)
+    dob=models.DateField()
     Email=models.EmailField(null=True,blank=True)
     
 class Category(models.Model):

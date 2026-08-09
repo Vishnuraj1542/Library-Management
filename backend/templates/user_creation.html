@@ -8,7 +8,7 @@
 <body>
     <form method="post">
         <h2>Registration Form</h2>
-        {%csrf_token%}
+        {% csrf_token %}
         {{form.as_p}}
     <button type="submit">register</button>
     </form>

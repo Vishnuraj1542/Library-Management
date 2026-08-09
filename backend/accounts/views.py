@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .models import UserAccount
 from django import views
 from .forms import UsercreationForm
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login as auth_login, logout
 
 # Create your views here.
 def homepage(request):
@@ -26,15 +26,15 @@ def user_creation(request):
 def login_view(request):
     if request.method =="POST":
         username=request.POST.get('username')
-        name=UserAccount.objects.filter(username)
+        name=UserAccount.objects.filter(username=username)
         if name :
             print(name)
         password=request.POST.get('password')
         user=authenticate(request,username=username,password=password)
         if user is not None:
-            login(request,user)
+            auth_login(request,user)
             print('user logged in sucessfully')
-            return redirect('home')
+            return redirect('homepage')
         else:
             print('not correct')
             return render(request,'login.html',{'error':'invalid credential'})
