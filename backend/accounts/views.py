@@ -39,12 +39,12 @@ def login_view(request):
                 'library':'librarian_page'
             }
             iden_user=user_pages.get(request.user.user_type)
-            auth_login(request,user)
+            auth_login(request,iden_user)
             print('user logged in sucessfully')
-            return redirect('iden_user','homepage')
+            return redirect('iden_user','homepage ')
         else:
             print('not correct')
-            return render(request,'login.html',{'error':'invalid credential'})
+            return redirect('login.html',{'error':'invalid credential'})
     return render(request,'login.html')
         
     
